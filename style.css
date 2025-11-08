@@ -149,7 +149,7 @@ html, body {
     margin: -100px 0 0 0;
     font-style: italic;
     color: white;
-    text-shadow: 0 0 10px rgba(32, 32, 32, 0.857);
+    text-shadow: 0 0 10px rgba(32, 32, 32, 30);
     
 }
 /* Estilo para la cuenta regresiva */
@@ -689,7 +689,7 @@ footer .logo img {
     }
     .photo-text h2 {
         margin-top: -40px;
-        font-size: 35px;
+        font-size: 30px;
     }
     .photo-text h3{
         margin-top: -50px;
@@ -1068,5 +1068,25 @@ footer .logo img {
     color: #a9471c;
     font-family: 'Great Vibes', serif;
     font-size: 20px;
+  }
+  .calendar-btn {
+    margin-top: 40px;
+    padding: 10px 25px;
+    border: none;
+    border-radius: 5px;
+    font-size: 15px;
+    background-color: #c75a24;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 500;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  }
+  
+  .calendar-btn:hover {
+    background-color: black;
+    transform: scale(1.05);
   }
   

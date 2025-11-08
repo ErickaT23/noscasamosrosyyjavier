@@ -37,7 +37,7 @@
     <div id="invitation" class="hidden">
           <div class="photo-section fade-in-element">
              <div class="photo-container">
-                 <img src="/images/V5.jpg" alt="Foto de la pareja" class="photo fade-in-element fade-in-element" loading="lazy">
+                 <img src="/images/fotoportada.jpeg" alt="Foto de la pareja" class="photo fade-in-element fade-in-element" loading="lazy">
              </div>
                 <div class="photo-text">
                  <h1>Rosy Hernández & Javier Monterroso</h1>
@@ -60,7 +60,7 @@
          <div class="content">
             <div class="photo-section fade-in-element fade-in-element">
                 <div class="photo-container">
-                    <img src="/images/V4.jpg" alt="Foto de la pareja" class="photo fade-in-element fade-in-element">
+                    <img src="/images/countdown.jpeg" alt="Foto de la pareja" class="photo fade-in-element fade-in-element">
                 </div>
                       <div class="photo-text fade-in-element fade-in-element">
                           <h3 class="title">¡Nos casamos!</h3>
@@ -82,7 +82,10 @@
                                  <span id="seconds" class="number">00</span>
                                  <span class="label">Segundos</span>
                              </div>
-                         </div>                    
+                         </div>
+                         <button id="calendar-button" class="calendar-btn">
+                            Agregar al Calendario
+                          </button>                                             
                       </div>
                  </div>
             </div>
@@ -105,6 +108,7 @@
                   </div>
                 </div>
               </div>
+              <img src="/images/I3.jpeg" alt="Foto de la quinceañera" width="100%" loading="lazy">
             <div class="itinerary-section fade-in-element fade-in-element">
                 <div class="itinerary-item">
                     <lord-icon 
@@ -148,6 +152,7 @@
                     </div>
                 </div>
             </div>
+            <img src="/images/I1.jpeg" alt="Foto de la quinceañera" width="100%" loading="lazy">
             <div class="gifts-section fade-in-element fade-in-element">
                 <h2>Lluvia de Sobres</h2>
                 <lord-icon 
@@ -171,6 +176,7 @@
                 ></lord-icon>
                 <p>Vestimenta Formal y llega bien abrigado. Nos reservamos el color blanco y terracota.</p>
             </div>   
+            <img src="/images/I4.jpeg" alt="Foto de la quinceañera" width="100%" loading="lazy">
             <!-- 🎶 SECCIÓN DE PLAYLIST -->
             <section class="playlist-section fade-in-element">
 
@@ -209,27 +215,26 @@
                 <div class="gallery-main fade-in-element">
                     <!-- Al hacer clic en la imagen principal, se abre el modal -->
                     <label for="toggle-modal">
-                        <img id="main-photo" src="/images/V9.jpg" alt="Foto principal" onclick="changePhoto(this)" loading="lazy">
+                        <img id="main-photo" src="/images/G1.jpeg" alt="Foto principal" onclick="changePhoto(this)" loading="lazy">
                     </label>
                 </div>
-            
                 <!-- Miniaturas de la galería -->
                 <div class="gallery-thumbs fade-in-element">
                     <!-- Cada miniatura también actúa como disparador del modal -->
                     <label for="toggle-modal">
-                        <img src="images/V9.jpg" alt="Foyo 1" onclick="changePhoto(this)" loading="lazy">
+                        <img src="images/G1.jpeg" alt="Foyo 1" onclick="changePhoto(this)" loading="lazy">
                     </label>
                     <label for="toggle-modal">
-                        <img src="/images/V7.jpg" alt="Foto 2" onclick="changePhoto(this)" loading="lazy">
+                        <img src="/images/G2.jpg" alt="Foto 2" onclick="changePhoto(this)" loading="lazy">
                     </label>
                     <label for="toggle-modal">
-                        <img src="/images/V3.jpg" alt="Foto 3" onclick="changePhoto(this)" loading="lazy">
+                        <img src="/images/G4.jpeg" alt="Foto 3" onclick="changePhoto(this)" loading="lazy">
                     </label>
                     <label for="toggle-modal">
-                        <img src="/images/V1.jpg" alt="Foto 4" onclick="changePhoto(this)" loading="lazy">
+                        <img src="/images/G5.jpeg" alt="Foto 4" onclick="changePhoto(this)" loading="lazy">
                     </label>
                     <label for="toggle-modal">
-                        <img src="/images/V8.jpg" alt="Foto 5" onclick="changePhoto(this)" loading="lazy">
+                        <img src="/images/G6.jpeg" alt="Foto 5" onclick="changePhoto(this)" loading="lazy">
                     </label>
                 </div>
             </div>
@@ -240,9 +245,10 @@
                     <div id="qrCode"></div>
                     <img src="/images/QR.svg" alt="Escane el QR" width="400">
                     <p>Escanea el código QR o usa el botón para subir tus fotos</p>
-                    <a class="upload-btn" href="https://drive.google.com/drive/folders/15CjFWpglYF60W42NX02Vm4JcwH0ukxp7?usp=drive_link" target="_blank">SUBIR FOTOS</a>
+                    <a class="upload-btn" href="https://drive.google.com/drive/folders/1ruIhDsoqtHbClcQZOm5m5EjTbQ6Jtiv-?usp=drive_link" target="_blank">SUBIR FOTOS</a>
                 </div>
             </div>
+            <img src="/images/I2.jpeg" alt="Foto de la quinceañera" width="100%" loading="lazy">
             <!-- 💌 SECCIÓN DE BUENOS DESEOS -->
             <section class="wishes-section fade-in-element">
                 <h2>Buenos Deseos</h2>
@@ -273,6 +279,7 @@
                 <div id="wishes" class="wishes-list hidden"></div>
             
             </section>
+            <img src="/images/I5.jpeg" alt="Foto de la quinceañera" width="100%" loading="lazy">
             <div class="rsvp-section fade-in-element fade-in-element">
                 <h2>Confirmación</h2>
                 <lord-icon 
@@ -286,7 +293,7 @@
                 <button type="button" id="confirm-button">CONFIRMA TU ASISTENCIA</button>
             </div>
             <div class="photo-full fade-in-element fade-in-element">
-                <img src="/images/V2.jpg" alt="Foto de la pareja" loading="lazy">
+                <img src="/images/foto-final.jpeg" alt="Foto de la pareja" loading="lazy">
             </div>
             <div class="banner-section fade-in-element fade-in-element1">
                 <p>“Un cordón de tres dobleces no se rompe fácilmente” y que “si alguno prevaleciere contra uno, dos le resistirán” Eclesiastes  4:12</p>

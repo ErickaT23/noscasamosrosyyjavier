@@ -91,7 +91,7 @@ document.addEventListener("DOMContentLoaded", function() {
         togglePlayPause();
     });
 
-    const targetDate = new Date('2026-01-03T00:00:00').getTime();
+    const targetDate = new Date('2025-12-27T00:16:00').getTime();
     const countdown = setInterval(() => {
         const now = new Date().getTime();
         const distance = targetDate - now;
@@ -185,3 +185,8 @@ document.addEventListener("DOMContentLoaded", function() {
     window.toggleWishes = toggleWishes;
 });
 
+document.getElementById("calendar-button").addEventListener("click", function() {
+    const calendarUrl = "https://www.google.com/calendar/render?action=TEMPLATE&text=Nos+casamos+Rosy+y+Javier&dates=20251227T220000Z/20251228T060000Z&details=¡Acompáñanos+a+celebrar+nuestra+boda!+Será+un+día+inolvidable+💍✨&location=Huehuetenango%2C+Guatemala&ctz=America%2FGuatemala";
+    window.open(calendarUrl, "_blank");
+  });
+  
