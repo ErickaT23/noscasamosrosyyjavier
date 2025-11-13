@@ -94,11 +94,37 @@ html, body {
     margin: 0;
     font-size: 48px;
     font-family: Garamond, serif;
-    text-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    background: linear-gradient(to right, #a9471c, #c75a24, #e9743d, #c75a24, #a9471c);
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(to right, #b98b2f, #e7c773, #ffe8a3, #e7c773, #b98b2f);
     -webkit-background-clip: text;
     color: transparent;
+    margin-left: -15px;
 }
+/* 🔔 Tooltip del seal */
+.seal-tooltip {
+    position: absolute;
+    top: -45px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0,0,0,0.75);
+    color: white;
+    padding: 10px 18px;
+    font-size: 22px;
+    border-radius: 8px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .5s ease, transform .5s ease;
+    font-family: 'Cormorant Garamond', serif;
+    z-index: 20;
+}
+
+/* Versión visible */
+.seal-tooltip.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-5px);
+}
+
 .hidden {
     display: none;
 }
@@ -1089,4 +1115,55 @@ footer .logo img {
     background-color: black;
     transform: scale(1.05);
   }
-  
+  .directions-button {
+    display: flex;
+    align-items: center;       /* 🔥 Esto centra verticalmente el icono y el texto */
+    justify-content: center;
+    gap: 20px;
+}
+.directions-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-top: 20px;
+}
+/* Botón principal */
+.directions-button {
+    display: flex;
+    align-items: center;     /* 🔥 Centra verticalmente el icono y texto */
+    gap: 15px;
+    padding: 10px 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #c75a24;
+    color: white;
+    font-weight: 200;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+    transition: background-color 0.3s;
+}
+/* Hover */
+.directions-button:hover {
+    background-color: black;
+}
+/* Contenedor del icono */
+.icon-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+/* Tamaño del Lordicon */
+.map-lordicon {
+    width: 30px;
+    height: 30px;
+}
+/* Texto centrado */
+.btn-text {
+    display: flex;
+    align-items: center;
+    color: white;
+}
+.nota p{
+    font-size: 14px;
+}

@@ -59,18 +59,22 @@ const guests = [
         document.querySelector('.invitation-info-section').style.display = 'none';
     }
 // --- Generar enlace dinámico al formulario de confirmación ---
+
+// URL base del formulario (sin nombre prellenado)
 const formBaseUrl = "https://docs.google.com/forms/d/e/1FAIpQLSfPYWliJGV8YMKEhpInKFCd2hcJ0eTdcjffo6QHWY2tXBA6gw/viewform?usp=pp_url";
 
+// Convertir el nombre del invitado a URL safe
 const encodedName = encodeURIComponent(guest.name);
-const encodedPasses = encodeURIComponent(guest.passes);
 
-const formUrl = `${formBaseUrl}&entry.42292443=${encodedName}&entry.800985369=${encodedPasses}`;
+// Construir la URL final con el campo prellenado
+const formUrl = `${formBaseUrl}&entry.42292443=${encodedName}`;
 
-// Asignar URL dinámico al botón
+// Asignar la URL al botón de confirmación
 const confirmButton = document.getElementById('confirm-button');
 confirmButton.onclick = function() {
     location.href = formUrl;
 };
+
 
 
 });

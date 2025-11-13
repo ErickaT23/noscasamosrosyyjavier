@@ -189,4 +189,18 @@ document.getElementById("calendar-button").addEventListener("click", function() 
     const calendarUrl = "https://www.google.com/calendar/render?action=TEMPLATE&text=Nos+casamos+Rosy+y+Javier&dates=20251227T220000Z/20251228T060000Z&details=¡Acompáñanos+a+celebrar+nuestra+boda!+Será+un+día+inolvidable+💍✨&location=Huehuetenango%2C+Guatemala&ctz=America%2FGuatemala";
     window.open(calendarUrl, "_blank");
   });
-  
+
+  // Mostrar tooltip 1 segundo después de cargar la invitación
+window.addEventListener("load", function() {
+    const tooltip = document.getElementById("sealTooltip");
+
+    setTimeout(() => {
+        tooltip.classList.add("show");
+
+        // Lo ocultamos después de 3 segundos si quieres
+        setTimeout(() => {
+            tooltip.classList.remove("show");
+        }, 3000);
+
+    }, 1000); // 1 segundo después de cargar
+});

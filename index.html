@@ -29,6 +29,7 @@
     <div id="envelope">
         <div id="envelope-top"></div>
         <div id="seal" onclick="openEnvelopeAndPlayMusic()">
+            <span class="seal-tooltip" id="sealTooltip">Haz click para abrir la invitación</span>
             <h2 class="fade-in-element">R | J</h2>
         </div>
         <div id="envelope-bottom"></div>
@@ -97,17 +98,23 @@
             </div>
             <div class="parents-section fade-in-element">
                 <h2>Con la bendición de Dios y de nuestros padres</h2>
+            
                 <div class="parents-names">
-                  <div class="parent-side">
-                    <h3>Padres del novio</h3>
-                    <p>José Hernández (QEPD) & Bernardina Sánchez</p>
-                  </div>
-                  <div class="parent-side">
-                    <h3>Padres de la novia</h3>
-                    <p>Francisco Monterroso (QEPD) & Rosa María Vasquez</p>
-                  </div>
+                    <div class="parent-side">
+                        <h3>Padres del novio</h3>
+                        <p>Francisco Monterroso (QEPD) & Rosa María Vasquez</p>
+                    </div>
+                    <div class="parent-side">
+                        <h3>Padres de la novia</h3>
+                        <p>José Hernández (QEPD) & Bernardina Sánchez</p>
+                    </div>
+                    <div class="parent-side">
+                        <h3>Nuestros Padrinos</h3>
+                        <p>Gladis Villalta de Vásquez</p>
+                        <p>& Hugo Vásquez</p>
+                    </div>
                 </div>
-              </div>
+            </div>            
               <img src="/images/I3.jpeg" alt="Foto de la quinceañera" width="100%" loading="lazy">
             <div class="itinerary-section fade-in-element fade-in-element">
                 <div class="itinerary-item">
@@ -120,15 +127,45 @@
                      class="lord-icon-style"
                      ></lord-icon>
                     <h2>Ceremonia</h2>
-                    <p>Catedral de la Purisima Concepcion de Ciudad Vieja</p>
+                    <p>Catedral de la Purisima Concepción, Ciudad Vieja, Sacatepéquez</p>
+                    <p>Celebrante: Dario Garcia</p>
+                    <p>Música: Silvia Mertins</p>
                     <div class="itinerary-details">
                         <div class="time-location">
                             <span class="date">27 Diciembre</span>
                             <span class="separator">|</span>
                             <span class="time">16:00 hrs</span>
                         </div>
-                        <p class="location">Ciudad Vieja</p>
-                        <button type="button"  class="directions-button" onclick="location.href='https://maps.app.goo.gl/qTZQCHdNsp6PmoJX6'">CÓMO LLEGAR</button>
+                        <div class="nota">
+                            <p>*En la iglesia hay parqueo para vehiculos</p>
+                        </div>
+                        <div class="directions-buttons">
+                            <!-- BOTÓN GOOGLE MAPS (LORDICON) -->
+                            <button type="button" class="directions-button"
+                                onclick="location.href='https://maps.app.goo.gl/FtDgsqaL8JXs5ao39'">
+                                <lord-icon 
+                                    src="https://cdn.lordicon.com/onmwuuox.json"
+                                    trigger="loop"
+                                    stroke="light"
+                                    colors="primary:#ffffff,secondary:#ffffff"
+                                    class="map-lordicon">
+                                </lord-icon>
+                        
+                                Google Maps
+                            </button>
+                            <!-- BOTÓN WAZE (SVG LOCAL) -->
+                            <button type="button" class="directions-button"
+                                onclick="location.href='https://ul.waze.com/ul?place=ChIJW4cKQwARiYURDvgc_0bGCVg&ll=14.52539860%2C-90.76227370&navigate=yes&utm_campaign=default&utm_source=waze_website&utm_medium=lm_share_location'">
+                                <lord-icon 
+                                src="https://cdn.lordicon.com/onmwuuox.json"
+                                trigger="loop"
+                                stroke="light"
+                                colors="primary:#ffffff,secondary:#ffffff"
+                                class="map-lordicon">
+                            </lord-icon>
+                                Waze
+                            </button>
+                        </div>
                     </div>
                 </div>
                 <div class="itinerary-item">
@@ -148,7 +185,33 @@
                             <span class="time">18:00 hrs</span>
                         </div>
                         <p class="location">Antigua Guatemala</p>
-                        <button class="directions-button" onclick="location.href='https://maps.app.goo.gl/uFNcUVY9X1ppqXym7'">CÓMO LLEGAR</button>
+                    </div>
+                    <div class="directions-buttons">
+                        <!-- BOTÓN GOOGLE MAPS (LORDICON) -->
+                        <button type="button" class="directions-button"
+                            onclick="location.href='https://maps.app.goo.gl/Ud8ErkZ9iR2NL88f6'">
+                            <lord-icon 
+                                src="https://cdn.lordicon.com/onmwuuox.json"
+                                trigger="loop"
+                                stroke="light"
+                                colors="primary:#ffffff,secondary:#ffffff"
+                                class="map-lordicon">
+                            </lord-icon>
+                    
+                            Google Maps
+                        </button>
+                        <!-- BOTÓN WAZE (SVG LOCAL) -->
+                        <button type="button" class="directions-button"
+                            onclick="location.href='https://www.waze.com/en/live-map/directions/finca-san-ignacio-antigua-guatemala?place=w.176488593.1764623790.8585958'">
+                            <lord-icon 
+                            src="https://cdn.lordicon.com/onmwuuox.json"
+                            trigger="loop"
+                            stroke="light"
+                            colors="primary:#ffffff,secondary:#ffffff"
+                            class="map-lordicon">
+                        </lord-icon>
+                            Waze
+                        </button>
                     </div>
                 </div>
             </div>
@@ -174,7 +237,7 @@
                  colors="primary:#000000,secondary:#c75a24"
                  class="lord-icon-style"
                 ></lord-icon>
-                <p>Vestimenta Formal y llega bien abrigado. Nos reservamos el color blanco y terracota.</p>
+                <p>Vestimenta Formal y llegar bien abrigados. Nos reservamos el color blanco y terracota.</p>
             </div>   
             <img src="/images/I4.jpeg" alt="Foto de la quinceañera" width="100%" loading="lazy">
             <!-- 🎶 SECCIÓN DE PLAYLIST -->
@@ -240,7 +303,7 @@
             </div>
             <div class="album-section fade-in-element">
                 <h2>¡Hagamos los recuerdos inolvidables!</h2>
-                <h1 class="hashtag">#noscasamosyonatanykarla</h1>
+                <h1 class="hashtag">#noscasamosrosyyjavier</h1>
                 <div class="qr-container">
                     <div id="qrCode"></div>
                     <img src="/images/QR.svg" alt="Escane el QR" width="400">
