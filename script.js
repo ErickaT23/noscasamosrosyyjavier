@@ -273,7 +273,7 @@ submitBtn.addEventListener("click", async () => {
         hora: new Date().toLocaleTimeString()
     };
 
-    const scriptURL = "https://script.google.com/macros/s/AKfycbxB8cmd2Z51hSZnPikYi2yVkgyU5F8JRNaP4xy87lj8tikf3nEXZHnskiS9A69FYqpY/exec";
+    const scriptURL = "https://script.google.com/macros/s/AKfycbyluBFNz9tzKs5XnmoxI8FxEtWKmg_Ge1DiXkB1nIHrkN35lLDiZBULUdOA7bfYsGgL/exec";
 
 const response = await fetch(scriptURL, {
     method: "POST",
