@@ -186,7 +186,7 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 document.getElementById("calendar-button").addEventListener("click", function() {
-    const calendarUrl = "https://www.google.com/calendar/render?action=TEMPLATE&text=Nos+casamos+Rosy+y+Javier&dates=20251227T220000Z/20251228T060000Z&details=¡Acompáñanos+a+celebrar+nuestra+boda!+Será+un+día+inolvidable+💍✨&location=Huehuetenango%2C+Guatemala&ctz=America%2FGuatemala";
+    const calendarUrl = "https://www.google.com/calendar/render?action=TEMPLATE&text=Nos+casamos+Rosy+y+Javier&dates=20251227T220000Z/20251228T060000Z&details=¡Acompáñanos+a+celebrar+nuestra+boda!+Será+un+día+inolvidable+💍✨&location=%2C+Guatemala&ctz=America%2FGuatemala";
     window.open(calendarUrl, "_blank");
   });
 
@@ -204,3 +204,139 @@ window.addEventListener("load", function() {
 
     }, 1000); // 1 segundo después de cargar
 });
+function precargarRSVP() {
+    if (!guest) return;
+
+    document.getElementById("rsvp-name").value = guest.name;
+    document.getElementById("rsvp-passes").value = guest.passes;
+}
+
+//RSVP//
+// ======================================================
+// RSVP — FORMULARIO DE CONFIRMACIÓN
+// ======================================================
+
+// ====== INPUTS DEL FORMULARIO ======
+const rsvpName = document.getElementById('rsvp-name');
+const rsvpPasses = document.getElementById('rsvp-passes');
+const rsvpAdultos = document.getElementById('rsvp-adultos');
+const rsvpNinos = document.getElementById('rsvp-ninos');
+const rsvpAsistencia = document.getElementById('rsvp-asistencia');
+
+// ====== BOTONES Y MENSAJES ======
+const confirmButton = document.getElementById('confirm-button');
+const rsvpForm = document.getElementById('rsvp-form');
+const submitBtn = document.getElementById("submit-rsvp");
+const msg = document.getElementById("rsvp-message");
+
+// ====== EVENTO PARA ABRIR FORMULARIO ======
+confirmButton.addEventListener("click", () => {
+
+    if (!guest) {
+        alert("No se encontró información del invitado.");
+        return;
+    }
+
+    // Pre-cargar información del invitado
+    rsvpName.value = guest.name;
+    rsvpPasses.value = guest.passes;
+
+    // Mostrar formulario RSVP
+    rsvpForm.classList.remove("hidden");
+});
+
+// ====== VALIDACIÓN DE PASES ======
+function validatePases() {
+    const total = Number(rsvpAdultos.value) + Number(rsvpNinos.value);
+    if (total > Number(rsvpPasses.value)) {
+        alert("No puede exceder la cantidad de pases asignados.");
+        rsvpAdultos.value = "";
+        rsvpNinos.value = "";
+    }
+}
+
+rsvpAdultos.addEventListener("input", validatePases);
+rsvpNinos.addEventListener("input", validatePases);
+
+// ====== ENVÍO A GOOGLE SHEETS ======
+submitBtn.addEventListener("click", async () => {
+
+    const data = {
+        id: guest.id,
+        nombre: guest.name,
+        pases: guest.passes,
+        adultos: rsvpAdultos.value,
+        ninos: rsvpNinos.value,
+        asistencia: rsvpAsistencia.value,
+        link: window.location.href,
+        fecha: new Date().toLocaleDateString(),
+        hora: new Date().toLocaleTimeString()
+    };
+
+    const scriptURL = "https://script.google.com/macros/s/AKfycbxB8cmd2Z51hSZnPikYi2yVkgyU5F8JRNaP4xy87lj8tikf3nEXZHnskiS9A69FYqpY/exec";
+
+const response = await fetch(scriptURL, {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify(data)
+});
+
+    function doPost(e) {
+        try {
+          // Validar que venga contenido
+          if (!e || !e.postData || !e.postData.contents) {
+            return ContentService.createTextOutput(
+              JSON.stringify({ status: "error", message: "No data received" })
+            ).setMimeType(ContentService.MimeType.JSON);
+          }
+      
+          const sheet = SpreadsheetApp.getActive().getSheetByName("RSVP");
+          const data = JSON.parse(e.postData.contents);
+      
+          const id = data.id;
+      
+          // Leer IDs existentes (evitar duplicados)
+          const existingIds = sheet.getRange(2, 1, sheet.getLastRow(), 1).getValues().flat();
+      
+          if (existingIds.includes(id)) {
+            return ContentService.createTextOutput(
+              JSON.stringify({ status: "duplicate" })
+            ).setMimeType(ContentService.MimeType.JSON);
+          }
+      
+          // Guardar la nueva fila
+          sheet.appendRow([
+            data.id,
+            data.nombre,
+            data.pases,
+            data.adultos,
+            data.ninos,
+            data.asistencia,
+            data.fecha,
+            data.hora,
+            data.link
+          ]);
+      
+          return ContentService.createTextOutput(
+            JSON.stringify({ status: "success" })
+          ).setMimeType(ContentService.MimeType.JSON);
+      
+        } catch (err) {
+          return ContentService.createTextOutput(
+            JSON.stringify({ status: "error", message: err })
+          ).setMimeType(ContentService.MimeType.JSON);
+        }
+      }
+      
+
+    // Confirmación nueva — éxito
+    msg.textContent = "¡Hemos recibido su respuesta, gracia!";
+    msg.classList.remove("hidden");
+
+    submitBtn.disabled = true;
+    confirmButton.disabled = true;
+});
+
+

@@ -1167,3 +1167,36 @@ footer .logo img {
 .nota p{
     font-size: 14px;
 }
+.hidden {
+    display: none;
+}
+
+#rsvp-form {
+    margin-top: 30px;
+    text-align: left;
+    padding: 20px;
+}
+
+#rsvp-form label {
+    font-size: 28px;
+    color: #742b09;
+    display: block;
+    margin-bottom: 5px;
+}
+
+#rsvp-form input,
+#rsvp-form select {
+    width: 100%;
+    font-size: 28px;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #c75a24;
+    border-radius: 8px;
+}
+
+.success-message {
+    margin-top: 10px;
+    color: #742b09;
+    font-size: 28px;
+    text-align: center;
+}

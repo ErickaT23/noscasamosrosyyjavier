@@ -346,15 +346,47 @@
             <div class="rsvp-section fade-in-element fade-in-element">
                 <h2>Confirmación</h2>
                 <lord-icon 
-                 src="https://cdn.lordicon.com/wzwygmng.json" 
-                 trigger="loop" 
-                 stroke="light"  
-                 colors="primary:#000000,secondary:#c75a24" 
-                 class="lord-icon-style"
-                 ></lord-icon>
-                <p>Para nosotros es muy importante que confirmes tu asistencia antes del 10 de diciembre, o bien indicarnos si no podrás acompañarnos.</p>
+                    src="https://cdn.lordicon.com/wzwygmng.json" 
+                    trigger="loop" 
+                    stroke="light"  
+                    colors="primary:#000000,secondary:#c75a24" 
+                    class="lord-icon-style">
+                </lord-icon>
+            
+                <p>Para nosotros es muy importante que confirmes tu asistencia antes del 10 de diciembre.</p>
+            
                 <button type="button" id="confirm-button">CONFIRMA TU ASISTENCIA</button>
+            
+                <!-- 🔽 FORMULARIO OCULTO -->
+                <div id="rsvp-form" class="hidden rsvp-form">
+                    <h3>Confirmación de asistencia</h3>
+                
+                    <label>Nombre completo</label>
+                    <input type="text" id="rsvp-name" readonly>
+                
+                    <label>Cantidad de pases asignados</label>
+                    <input type="number" id="rsvp-passes" readonly>
+                
+                    <label>Adultos</label>
+                    <input type="number" id="rsvp-adultos" min="0">
+                
+                    <label>Niños</label>
+                    <input type="number" id="rsvp-ninos" min="0">
+                
+                    <label>¿Asistirá?</label>
+                    <select id="rsvp-asistencia">
+                        <option value="Sí">Sí, asistiré</option>
+                        <option value="No">No podré asistir</option>
+                    </select>
+                
+                    <button id="submit-rsvp" class="rsvp-submit-btn">Enviar confirmación</button>
+                
+                    <p id="rsvp-message" class="hidden" style="color: green;">
+                        Ya has confirmado tu asistencia. ¡Gracias!
+                    </p>
+                </div>                
             </div>
+            
             <div class="photo-full fade-in-element fade-in-element">
                 <img src="/images/foto-final.jpeg" alt="Foto de la pareja" loading="lazy">
             </div>
@@ -374,8 +406,8 @@
         </div>
     </div>
 </div>
-    <script type="module" src="/database.js" defer></script>
+    <script src="/loads.js" defer></script>
     <script src="/script.js" defer></script>
-    <script type="module" src="/loads.js" defer></script>
+    <script type="module" src="/database.js"></script>
 </body>
 </html>
