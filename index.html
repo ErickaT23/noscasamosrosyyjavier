@@ -357,34 +357,25 @@
             
                 <button type="button" id="confirm-button">CONFIRMA TU ASISTENCIA</button>
             
-                <!-- 🔽 FORMULARIO OCULTO -->
-                <div id="rsvp-form" class="hidden rsvp-form">
-                    <h3>Confirmación de asistencia</h3>
-                
-                    <label>Nombre completo</label>
-                    <input type="text" id="rsvp-name" readonly>
-                
-                    <label>Cantidad de pases asignados</label>
-                    <input type="number" id="rsvp-passes" readonly>
-                
-                    <label>Adultos</label>
-                    <input type="number" id="rsvp-adultos" min="0">
-                
-                    <label>Niños</label>
-                    <input type="number" id="rsvp-ninos" min="0">
-                
-                    <label>¿Asistirá?</label>
-                    <select id="rsvp-asistencia">
-                        <option value="Sí">Sí, asistiré</option>
-                        <option value="No">No podré asistir</option>
-                    </select>
-                
-                    <button id="submit-rsvp" class="rsvp-submit-btn">Enviar confirmación</button>
-                
-                    <p id="rsvp-message" class="hidden" style="color: green;">
-                        Ya has confirmado tu asistencia. ¡Gracias!
-                    </p>
-                </div>                
+                <!-- 🔽 FORMULARIO -->
+                <form id="rsvp-form">
+                    <input type="hidden" name="id" id="guest-id">
+                    <input type="text" name="nombre" id="guest-name-input" readonly>
+                    <input type="number" name="pases" id="guest-passes-input" readonly>
+                    
+                    <label>Acompañantes (opcional):</label>
+                    <input type="text" name="acompanantes" placeholder="Ej: Juan, María">
+                    
+                    <label>Niños (opcional):</label>
+                    <input type="number" name="ninos" min="0">
+                    
+                    <label>Adultos extra (opcional):</label>
+                    <input type="number" name="adultos" min="0">
+                  
+                    <button type="submit">Confirmar asistencia</button>
+                </form>
+                  
+                  <div id="rsvp-message"></div>                  
             </div>
             
             <div class="photo-full fade-in-element fade-in-element">

@@ -144,18 +144,14 @@ document.addEventListener("DOMContentLoaded", function() {
         const wishesDiv = document.getElementById('wishes');
         wishesDiv.innerHTML = wishes.map(wish => `<p><strong>${wish.name}:</strong> ${wish.message}</p>`).join('');
     }
-
     function toggleWishForm() {
         document.getElementById('wish-form').classList.toggle('hidden');
     }
-
     function toggleWishes() {
         const wishesDiv = document.getElementById('wishes');
         wishesDiv.classList.toggle('hidden');
       }      
-
       window.toggleWishes = toggleWishes;
-
 
     window.changePhoto = function(element) {
         const mainPhotoModal = document.getElementById('main-photo');
@@ -166,7 +162,6 @@ document.addEventListener("DOMContentLoaded", function() {
             openModal();
         }
     }
-
     function openModal() {
         document.getElementById('photo-modal').style.display = 'block';
     }
@@ -204,51 +199,45 @@ window.addEventListener("load", function() {
 
     }, 1000); // 1 segundo después de cargar
 });
-function precargarRSVP() {
-    if (!guest) return;
-
-    document.getElementById("rsvp-name").value = guest.name;
-    document.getElementById("rsvp-passes").value = guest.passes;
-}
 
 //RSVP//
-// ======================================================
-// RSVP — FORMULARIO DE CONFIRMACIÓN
-// ======================================================
+// =========================================
+// RSVP - CONFIRMACIÓN DE ASISTENCIA
+// =========================================
 
-// ====== INPUTS DEL FORMULARIO ======
-const rsvpName = document.getElementById('rsvp-name');
-const rsvpPasses = document.getElementById('rsvp-passes');
-const rsvpAdultos = document.getElementById('rsvp-adultos');
-const rsvpNinos = document.getElementById('rsvp-ninos');
-const rsvpAsistencia = document.getElementById('rsvp-asistencia');
+// Inputs
+const rsvpName = document.getElementById("rsvp-name");
+const rsvpPasses = document.getElementById("rsvp-passes");
+const rsvpAdultos = document.getElementById("rsvp-adultos");
+const rsvpNinos = document.getElementById("rsvp-ninos");
+const rsvpAsistencia = document.getElementById("rsvp-asistencia");
 
-// ====== BOTONES Y MENSAJES ======
-const confirmButton = document.getElementById('confirm-button');
-const rsvpForm = document.getElementById('rsvp-form');
+// Botones
+const confirmButton = document.getElementById("confirm-button");
+const rsvpForm = document.getElementById("rsvp-form");
 const submitBtn = document.getElementById("submit-rsvp");
 const msg = document.getElementById("rsvp-message");
 
-// ====== EVENTO PARA ABRIR FORMULARIO ======
-confirmButton.addEventListener("click", () => {
-
-    if (!guest) {
-        alert("No se encontró información del invitado.");
-        return;
-    }
-
-    // Pre-cargar información del invitado
+// ========= Cargar datos desde loads.js (GUEST GLOBAL) =========
+if (window.guest) {
     rsvpName.value = guest.name;
     rsvpPasses.value = guest.passes;
+} else {
+    confirmButton.disabled = true;
+    console.warn("⚠️ Invitado no encontrado");
+}
 
-    // Mostrar formulario RSVP
+// ========= Mostrar formulario =========
+confirmButton.addEventListener("click", () => {
     rsvpForm.classList.remove("hidden");
 });
 
-// ====== VALIDACIÓN DE PASES ======
+// ========= Validar pases =========
 function validatePases() {
     const total = Number(rsvpAdultos.value) + Number(rsvpNinos.value);
-    if (total > Number(rsvpPasses.value)) {
+    const max = Number(rsvpPasses.value);
+
+    if (total > max) {
         alert("No puede exceder la cantidad de pases asignados.");
         rsvpAdultos.value = "";
         rsvpNinos.value = "";
@@ -258,36 +247,40 @@ function validatePases() {
 rsvpAdultos.addEventListener("input", validatePases);
 rsvpNinos.addEventListener("input", validatePases);
 
-// ====== ENVÍO A GOOGLE SHEETS ======
+// ========= Enviar a Google Sheets =========
 submitBtn.addEventListener("click", async () => {
+    if (!guest) return;
 
     const data = {
         id: guest.id,
         nombre: guest.name,
         pases: guest.passes,
-        adultos: rsvpAdultos.value,
-        ninos: rsvpNinos.value,
         asistencia: rsvpAsistencia.value,
-        link: window.location.href,
-        fecha: new Date().toLocaleDateString(),
-        hora: new Date().toLocaleTimeString()
+        adultos: rsvpAdultos.value || "0",
+        ninos: rsvpNinos.value || "0",
+        fecha: new Date().toLocaleDateString("es-GT"),
+        hora: new Date().toLocaleTimeString("es-GT"),
+        link: window.location.href
     };
 
-    const scriptURL = "https://script.google.com/macros/s/AKfycbyluBFNz9tzKs5XnmoxI8FxEtWKmg_Ge1DiXkB1nIHrkN35lLDiZBULUdOA7bfYsGgL/exec";
+    const scriptURL = "https://script.google.com/macros/s/AKfycbxOesej6J0jXjFeR_ENCf28228cFna2ipCbFF6-EFffzcTgwWRofWHxeD8KKODnRdTp/exec";
 
-const response = await fetch(scriptURL, {
-    method: "POST",
-    headers: {
-        "Content-Type": "application/json"
-    },
-    body: JSON.stringify(data)
+    try {
+        const response = await fetch(scriptURL, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data)
+        });
+
+        msg.textContent = "¡Hemos recibido su confirmación, gracias!";
+        msg.classList.remove("hidden");
+
+        submitBtn.disabled = true;
+        confirmButton.disabled = true;
+
+    } catch (error) {
+        msg.textContent = "Hubo un error al enviar la confirmación.";
+        msg.classList.remove("hidden");
+        console.error("Error:", error);
+    }
 });
-    // Confirmación nueva — éxito
-    msg.textContent = "¡Hemos recibido su respuesta, gracia!";
-    msg.classList.remove("hidden");
-
-    submitBtn.disabled = true;
-    confirmButton.disabled = true;
-});
-
-
