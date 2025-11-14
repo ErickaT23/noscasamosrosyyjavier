@@ -282,55 +282,6 @@ const response = await fetch(scriptURL, {
     },
     body: JSON.stringify(data)
 });
-
-    function doPost(e) {
-        try {
-          // Validar que venga contenido
-          if (!e || !e.postData || !e.postData.contents) {
-            return ContentService.createTextOutput(
-              JSON.stringify({ status: "error", message: "No data received" })
-            ).setMimeType(ContentService.MimeType.JSON);
-          }
-      
-          const sheet = SpreadsheetApp.getActive().getSheetByName("RSVP");
-          const data = JSON.parse(e.postData.contents);
-      
-          const id = data.id;
-      
-          // Leer IDs existentes (evitar duplicados)
-          const existingIds = sheet.getRange(2, 1, sheet.getLastRow(), 1).getValues().flat();
-      
-          if (existingIds.includes(id)) {
-            return ContentService.createTextOutput(
-              JSON.stringify({ status: "duplicate" })
-            ).setMimeType(ContentService.MimeType.JSON);
-          }
-      
-          // Guardar la nueva fila
-          sheet.appendRow([
-            data.id,
-            data.nombre,
-            data.pases,
-            data.adultos,
-            data.ninos,
-            data.asistencia,
-            data.fecha,
-            data.hora,
-            data.link
-          ]);
-      
-          return ContentService.createTextOutput(
-            JSON.stringify({ status: "success" })
-          ).setMimeType(ContentService.MimeType.JSON);
-      
-        } catch (err) {
-          return ContentService.createTextOutput(
-            JSON.stringify({ status: "error", message: err })
-          ).setMimeType(ContentService.MimeType.JSON);
-        }
-      }
-      
-
     // Confirmación nueva — éxito
     msg.textContent = "¡Hemos recibido su respuesta, gracia!";
     msg.classList.remove("hidden");
