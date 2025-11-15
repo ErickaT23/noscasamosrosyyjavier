@@ -205,15 +205,18 @@
                         </button>
                         <!-- BOTÓN WAZE (SVG LOCAL) -->
                         <button type="button" class="directions-button"
-                            onclick="location.href='https://waze.com/ul/h9fx6xr2rf'">
-                            <lord-icon 
+                        onclick="window.location='waze://?q=Salón%20de%20Eventos%20Bella%20Vista%2C%20Ciudad%20Vieja&ll=14.522100,-90.760800&navigate=yes'; 
+                                setTimeout(function(){ 
+                                    window.location='https://waze.com/ul?q=Salón%20de%20Eventos%20Bella%20Vista%2C%20Ciudad%20Vieja&ll=14.522100,-90.760800&navigate=yes'; 
+                                }, 500);">
+                        <lord-icon 
                             src="https://cdn.lordicon.com/onmwuuox.json"
                             trigger="loop"
                             stroke="light"
                             colors="primary:#ffffff,secondary:#ffffff"
                             class="map-lordicon">
                         </lord-icon>
-                            Waze
+                        Waze Recepción
                         </button>
                     </div>
                 </div>
