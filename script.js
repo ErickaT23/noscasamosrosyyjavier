@@ -201,86 +201,30 @@ window.addEventListener("load", function() {
 });
 
 //RSVP//
-// =========================================
-// RSVP - CONFIRMACIÓN DE ASISTENCIA
-// =========================================
-
-// Inputs
-const rsvpName = document.getElementById("rsvp-name");
-const rsvpPasses = document.getElementById("rsvp-passes");
-const rsvpAdultos = document.getElementById("rsvp-adultos");
-const rsvpNinos = document.getElementById("rsvp-ninos");
-const rsvpAsistencia = document.getElementById("rsvp-asistencia");
-
-// Botones
-const confirmButton = document.getElementById("confirm-button");
-const rsvpForm = document.getElementById("rsvp-form");
-const submitBtn = document.getElementById("submit-rsvp");
-const msg = document.getElementById("rsvp-message");
-
-// ========= Cargar datos desde loads.js (GUEST GLOBAL) =========
-if (window.guest) {
-    rsvpName.value = guest.name;
-    rsvpPasses.value = guest.passes;
-} else {
-    confirmButton.disabled = true;
-    console.warn("⚠️ Invitado no encontrado");
-}
-
-// ========= Mostrar formulario =========
-confirmButton.addEventListener("click", () => {
-    rsvpForm.classList.remove("hidden");
-});
-
-// ========= Validar pases =========
-function validatePases() {
-    const total = Number(rsvpAdultos.value) + Number(rsvpNinos.value);
-    const max = Number(rsvpPasses.value);
-
-    if (total > max) {
-        alert("No puede exceder la cantidad de pases asignados.");
-        rsvpAdultos.value = "";
-        rsvpNinos.value = "";
+document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('rsvpForm');
+    const successMessage = document.getElementById('successMessage');
+  
+    if (form) {
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+  
+        const formData = new FormData(form);
+  
+        fetch('https://docs.google.com/forms/d/e/1FAIpQLSfPYWliJGV8YMKEhpInKFCd2hcJ0eTdcjffo6QHWY2tXBA6gw/formResponse', {
+          method: 'POST',
+          mode: 'no-cors',
+          body: formData
+        })
+          .then(() => {
+            form.style.display = 'none';
+            if (successMessage) successMessage.style.display = 'block';
+          })
+          .catch((error) => {
+            console.error('Error al enviar:', error);
+            alert('Ocurrió un error al confirmar. Intenta nuevamente.');
+          });
+      });
     }
-}
-
-rsvpAdultos.addEventListener("input", validatePases);
-rsvpNinos.addEventListener("input", validatePases);
-
-// ========= Enviar a Google Sheets =========
-submitBtn.addEventListener("click", async () => {
-    if (!guest) return;
-
-    const data = {
-        id: guest.id,
-        nombre: guest.name,
-        pases: guest.passes,
-        asistencia: rsvpAsistencia.value,
-        adultos: rsvpAdultos.value || "0",
-        ninos: rsvpNinos.value || "0",
-        fecha: new Date().toLocaleDateString("es-GT"),
-        hora: new Date().toLocaleTimeString("es-GT"),
-        link: window.location.href
-    };
-
-    const scriptURL = "https://script.google.com/macros/s/AKfycbxOesej6J0jXjFeR_ENCf28228cFna2ipCbFF6-EFffzcTgwWRofWHxeD8KKODnRdTp/exec";
-
-    try {
-        const response = await fetch(scriptURL, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(data)
-        });
-
-        msg.textContent = "¡Hemos recibido su confirmación, gracias!";
-        msg.classList.remove("hidden");
-
-        submitBtn.disabled = true;
-        confirmButton.disabled = true;
-
-    } catch (error) {
-        msg.textContent = "Hubo un error al enviar la confirmación.";
-        msg.classList.remove("hidden");
-        console.error("Error:", error);
-    }
-});
+  });
+  

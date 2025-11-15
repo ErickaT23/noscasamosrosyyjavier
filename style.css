@@ -1200,3 +1200,19 @@ footer .logo img {
     font-size: 28px;
     text-align: center;
 }
+.confirmar-btn button {
+    padding: 10px 20px;
+    margin-top: 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;   
+    font-size: 16px;
+    background-color: #c75a24; /* Un solo tono dorado clásico */
+    color: white;   
+    transition: background-color 0.3s, box-shadow 0.3s;  
+    font-weight: 200;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* Sombra alrededor de la imagen */
+}
+.confirmar-btn button:hover {
+    background-color: black;
+}

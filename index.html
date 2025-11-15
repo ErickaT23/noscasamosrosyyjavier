@@ -343,40 +343,22 @@
             
             </section>
             <img src="/images/I5.jpeg" alt="Foto de la quinceañera" width="100%" loading="lazy">
-            <div class="rsvp-section fade-in-element fade-in-element">
+
+            <div class="rsvp-section fade-in-element">
                 <h2>Confirmación</h2>
                 <lord-icon 
-                    src="https://cdn.lordicon.com/wzwygmng.json" 
-                    trigger="loop" 
-                    stroke="light"  
-                    colors="primary:#000000,secondary:#c75a24" 
-                    class="lord-icon-style">
-                </lord-icon>
-            
+                src="https://cdn.lordicon.com/wzwygmng.json" 
+                trigger="loop" 
+                stroke="light"  
+                colors="primary:#000000,secondary:#c75a24" 
+                class="lord-icon-style">
+              </lord-icon>
                 <p>Para nosotros es muy importante que confirmes tu asistencia antes del 10 de diciembre.</p>
-            
-                <button type="button" id="confirm-button">CONFIRMA TU ASISTENCIA</button>
-            
-                <!-- 🔽 FORMULARIO -->
-                <form id="rsvp-form">
-                    <input type="hidden" name="id" id="guest-id">
-                    <input type="text" name="nombre" id="guest-name-input" readonly>
-                    <input type="number" name="pases" id="guest-passes-input" readonly>
-                    
-                    <label>Acompañantes (opcional):</label>
-                    <input type="text" name="acompanantes" placeholder="Ej: Juan, María">
-                    
-                    <label>Niños (opcional):</label>
-                    <input type="number" name="ninos" min="0">
-                    
-                    <label>Adultos extra (opcional):</label>
-                    <input type="number" name="adultos" min="0">
-                  
-                    <button type="submit">Confirmar asistencia</button>
-                </form>
-                  
-                  <div id="rsvp-message"></div>                  
+                <a id="confirmar-link" class="confirmar-btn" target="_blank">
+                    <button>Confirmar asistencia</button>
+                </a>
             </div>
+            
             
             <div class="photo-full fade-in-element fade-in-element">
                 <img src="/images/foto-final.jpeg" alt="Foto de la pareja" loading="lazy">
