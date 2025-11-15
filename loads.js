@@ -2,7 +2,7 @@ let guest = null; // GLOBAL
 
 const guests = [
     { id: "1", name: "Familia Hernández Recinos", passes: 5, gender: "M"},
-    { id: "2", name: "Hugo Valle", passes: 1, gender: "M"},
+    { id: "2", name: "Familia	Hernández Garcia", passes: 4, gender: "M"},
     { id: "3", name: "Fam. Ramos López", passes: 3 },
 ];
 
