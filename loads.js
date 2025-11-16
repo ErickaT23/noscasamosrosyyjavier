@@ -50,7 +50,12 @@ const guests = [
   { id: "47", name: "Esposos Vásquez Villalta", passes: 2 },
   { id: "48", name: "Familia Vásquez Quiñonez", passes: 4 },
   { id: "49", name: "Rosario Vásquez", passes: 3 },
-  { id: "50", name: "Vásquez Villalta", passes: 2 }
+  { id: "50", name: "Vásquez Villalta", passes: 2 },
+  { id: "51", name: "Familia  Hernández Corado", passes: 4 },
+  { id: "52", name: "Familia Hernández Méndez ", passes: 4 },
+  { id: "53", name: "Familia Enriquez Hernández ", passes: 3 },
+  { id: "54", name: "José Ramón Hernández", passes: 1 },
+  { id: "55", name: "Carlos Danilo Hernández", passes: 2 }
 ];
 
 const formLinks = {
