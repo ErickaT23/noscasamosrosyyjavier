@@ -55,7 +55,8 @@ const guests = [
   { id: "52", name: "Familia Hernández Méndez ", passes: 4 },
   { id: "53", name: "Familia Enriquez Hernández ", passes: 3 },
   { id: "54", name: "José Ramón Hernández", passes: 1 },
-  { id: "55", name: "Carlos Danilo Hernández", passes: 2 }
+  { id: "55", name: "Carlos Danilo Hernández", passes: 2 },
+  { id: "56", name: "Tía Tere & Julian Seco", passes: 2 }
 ];
 
 const formLinks = {
